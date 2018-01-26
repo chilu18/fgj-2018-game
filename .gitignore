@@ -1,3 +1,4 @@
 game.nes
 tmp
 *.chr
+node_modules
