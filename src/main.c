@@ -1,5 +1,6 @@
 #include "main.h"
 #include "nes/utils.h"
+#include "components/level.h"
 #include "components/character.h"
 #include "components/helloworld.h"
 #include "components/bg_music.h"
@@ -21,7 +22,7 @@ void update (void) {
 void start (void) {
   loadDefaultPalettes();
   startCharacter();
-  startHelloWorld();
+  startLevel();
   startBgMusic();
   resetScrollPosition();
 };
