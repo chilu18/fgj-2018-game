@@ -34,7 +34,7 @@ void updateCharacter(void) {
   updateCharacterPos();
 }
 
-void drawCharacter(void) {
+void drawCharacterBottom(void) {
   Sprites[0].xPos = 0x80;
   Sprites[0].yPos = 0x80;
   Sprites[0].spriteIndex = 0x01;
@@ -56,6 +56,50 @@ void drawCharacter(void) {
   Sprites[3].flags = 0x00;
 }
 
+void drawCharacterRight(void) {
+  Sprites[0].xPos = 0x80;
+  Sprites[0].yPos = 0x80;
+  Sprites[0].spriteIndex = 0x03;
+  Sprites[0].flags = 0x00;
+
+  Sprites[1].xPos = 0x80;
+  Sprites[1].yPos = 0x88;
+  Sprites[1].spriteIndex = 0x13;
+  Sprites[1].flags = 0x00;
+
+  Sprites[2].xPos = 0x78;
+  Sprites[2].yPos = 0x80;
+  Sprites[2].spriteIndex = 0x02;
+  Sprites[2].flags = 0x00;
+
+  Sprites[3].xPos = 0x78;
+  Sprites[3].yPos = 0x88;
+  Sprites[3].spriteIndex = 0x12;
+  Sprites[3].flags = 0x00;
+}
+
+void drawCharacterUp(void) {
+  Sprites[0].xPos = 0x80;
+  Sprites[0].yPos = 0x80;
+  Sprites[0].spriteIndex = 0x05;
+  Sprites[0].flags = 0x00;
+
+  Sprites[1].xPos = 0x80;
+  Sprites[1].yPos = 0x88;
+  Sprites[1].spriteIndex = 0x15;
+  Sprites[1].flags = 0x00;
+
+  Sprites[2].xPos = 0x78;
+  Sprites[2].yPos = 0x80;
+  Sprites[2].spriteIndex = 0x04;
+  Sprites[2].flags = 0x00;
+
+  Sprites[3].xPos = 0x78;
+  Sprites[3].yPos = 0x88;
+  Sprites[3].spriteIndex = 0x14;
+  Sprites[3].flags = 0x00;
+}
+
 void startCharacter(void) {
-  drawCharacter();
+  drawCharacterUp();
 }
