@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PatientZero : MonoBehaviour {
 
-	private float speed = 3;
+	private float speed = 0.05f;
+	private float rotationSpeed = 3.5f;
 
 	private Vector3 direction = new Vector3();
-
+		
+	public bool isMoving = false;
 	public Animator animator;
 
 	// Use this for initialization
@@ -21,19 +23,23 @@ public class PatientZero : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.direction = new Vector3(0,0,0);
+		isMoving = false;
 		if (Input.GetKey (KeyCode.DownArrow)) {
-			this.direction.z -= 1;
+			transform.Translate (Vector3.forward * -speed);
+			isMoving = true;
 		} else if (Input.GetKey (KeyCode.UpArrow)) {
-			this.direction.z += 1;
+			transform.Translate (Vector3.forward * speed);
+			isMoving = true;
 		}
 
 		if (Input.GetKey (KeyCode.LeftArrow)) {
-			this.direction.x -= 1;
+			transform.Rotate (Vector3.up * -rotationSpeed);
+			isMoving = true;
 		} else if (Input.GetKey (KeyCode.RightArrow)) {
-			this.direction.x += 1;
+			transform.Rotate (Vector3.up * rotationSpeed);
+			isMoving = true;
 		}
-		animator.SetFloat("speed", this.direction == Vector3.zero ? 0.0f : 1.0f);
+		animator.SetFloat("speed", isMoving == false ? 0.0f : 1.0f);
 
 		Vector3 currentDirection = this.transform.TransformDirection (Vector3.forward);
 		Vector3 wantedDirection = this.direction;

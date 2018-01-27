@@ -210,6 +210,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1783556287862074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4597807123005136}
+  m_Layer: 0
+  m_Name: CameraFollowPoint
+  m_TagString: PatientZeroCameraFollowPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1889365335741322
 GameObject:
   m_ObjectHideFlags: 1
@@ -348,6 +363,19 @@ Transform:
   m_Father: {fileID: 4902858833653588}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4597807123005136
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783556287862074}
+  m_LocalRotation: {x: 0.49662557, y: -0, z: -0, w: 0.86796486}
+  m_LocalPosition: {x: 0, y: 14.09, z: -1.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4891739907888604}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4705643401639998
 Transform:
   m_ObjectHideFlags: 1
@@ -419,6 +447,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4879207653249974}
+  - {fileID: 4597807123005136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -493,6 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6943d49d9994e4eb98186f82ae5c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
   animator: {fileID: 95301974596554804}
 --- !u!136 &136975841409593860
 CapsuleCollider:

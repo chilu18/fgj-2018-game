@@ -1219,7 +1219,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.87, y: 3.63, z: 51.2}
+  m_Size: {x: 1, y: 3.63, z: 51.2}
   m_Center: {x: 0, y: 1.09, z: 23}
 --- !u!95 &95073984463609926
 Animator:
@@ -1502,7 +1502,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.435, y: 1.815, z: 25.6}
+  m_Extents: {x: 0.5, y: 1.815, z: 25.6}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
