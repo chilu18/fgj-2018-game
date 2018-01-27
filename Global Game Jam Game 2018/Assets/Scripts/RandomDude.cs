@@ -110,7 +110,7 @@ public class RandomDude : MonoBehaviour {
 		this.animator.SetBool ("isZombie", true);
 		LookupPlaceOfInterest ();
 		SetSpeed (0.3f);
-		this.agent.radius = 0.48f;
+		this.agent.radius = 0.49f;
 	}
 
 	public void DisInfect() {
