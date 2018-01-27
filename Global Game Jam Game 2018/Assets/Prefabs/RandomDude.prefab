@@ -502,8 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f2c48afe69d4bd4adb93781ce3a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infectedMaterial: {fileID: 2100000, guid: 9875f4e23188e417283a6d20acb9b394, type: 2}
-  disinfectedMaterial: {fileID: 2100000, guid: f1fa3a112fcb84adeb17d86fb716adc6, type: 2}
+  infectedMaterial: {fileID: 2100000, guid: 2163afe925b7e4a9b8e68855880cdf39, type: 2}
+  disinfectedMaterial: {fileID: 2100000, guid: 98c85e82d74d44b0186eff50d62cca32, type: 2}
   renderer: {fileID: 137910924262912686}
   animator: {fileID: 95972192497533136}
 --- !u!136 &136980233154977892
