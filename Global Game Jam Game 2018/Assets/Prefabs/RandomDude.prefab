@@ -506,6 +506,8 @@ MonoBehaviour:
   disinfectedMaterial: {fileID: 2100000, guid: 98c85e82d74d44b0186eff50d62cca32, type: 2}
   renderer: {fileID: 137910924262912686}
   animator: {fileID: 95972192497533136}
+  currentWalkTarget: {x: 0, y: 0, z: 0}
+  wtFrom: 0
 --- !u!136 &136980233154977892
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -584,7 +586,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1279322278389914}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.55
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
