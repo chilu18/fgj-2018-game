@@ -38,7 +38,7 @@ const unsigned int LEVEL_SPRITES[] = {
 void drawLevel (void) {
   int index = 0;
   SET_PPU_ADDR(PPU_ADDR_NAMETABLE_0);
-  for (index = 0; index < sizeof(LEVEL_SPRITES); ++index) {
+  for (index = 0; index < 960; ++index) {
     PPU_VRAM_IO = LEVEL_SPRITES[index];
   }
   resetScrollPosition();
