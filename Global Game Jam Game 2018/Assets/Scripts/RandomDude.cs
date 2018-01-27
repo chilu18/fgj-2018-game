@@ -9,7 +9,8 @@ public class RandomDude : MonoBehaviour {
 	public Material disinfectedMaterial;
 	public Renderer renderer;
 	public Animator animator;
-	private Vector3 currentWalkTarget;
+	public Vector3 currentWalkTarget;
+	public int wtFrom;
 
 	private Vector3[] lookoutViewRayRelativePoints = new Vector3[] {
 		new Vector3(0,0,0),
@@ -50,6 +51,7 @@ public class RandomDude : MonoBehaviour {
 	void LookupPlaceOfInterest() {
 		PointOfInterest[] pois = GameObject.FindObjectsOfType<PointOfInterest> ();
 		PointOfInterest selected = pois [Random.Range (0, pois.Length)];
+		wtFrom = 1;
 		currentWalkTarget = selected.transform.position;
 		agent.SetDestination (currentWalkTarget);
 	}
@@ -57,7 +59,7 @@ public class RandomDude : MonoBehaviour {
 	void LookoutForInfectedPeople() {
 		Vector3 currentDirection = transform.TransformDirection (Vector3.forward);
 		foreach(Vector3 point in lookoutViewRayRelativePoints) {
-			Ray ray = new Ray (transform.position, currentDirection + transform.TransformDirection (point));
+			Ray ray = new Ray (transform.position + currentDirection * 0.55f, currentDirection + transform.TransformDirection (point));
 			Debug.DrawRay (ray.origin, ray.direction * lookoutDistance, Color.blue);
 
 			RaycastHit hit;
@@ -66,14 +68,18 @@ public class RandomDude : MonoBehaviour {
 			if(hit.collider != null) {
 				Collider c = hit.collider;
 				bool targetIsPatientZero = c.GetComponent<PatientZero> ();
-				bool targetIsInfected = c.GetComponent<RandomDude> () && c.GetComponent<RandomDude> ().IsInfected ();
+				bool targetIsHuman = c.GetComponent<RandomDude> ();
+				bool targetIsInfected = targetIsHuman && c.GetComponent<RandomDude> ().IsInfected ();
 
-				bool wantToEatTarget = this.IsInfected () && !targetIsPatientZero && !targetIsInfected;
+				bool wantToEatTarget = this.IsInfected () && targetIsHuman && !targetIsPatientZero && !targetIsInfected;
 				bool wantToEscsapeTarget = !this.IsInfected () && !targetIsPatientZero && targetIsInfected;
 
 				if (wantToEatTarget) {
-					currentWalkTarget = hit.point;
-					agent.SetDestination (hit.point);
+					if (!stayingCool) {
+						currentWalkTarget = hit.collider.transform.position;
+						agent.SetDestination (hit.collider.transform.position);
+						StayCool ();
+					}
 				} else if(wantToEscsapeTarget) {
 					GoToSafehouse ();
 					FreakOut ();
@@ -94,6 +100,7 @@ public class RandomDude : MonoBehaviour {
 
 	private void GoToSafehouse() {
 		Safehouse safehouse = FindObjectOfType<Safehouse> ();
+		wtFrom = 3;
 		currentWalkTarget = safehouse.transform.position;
 		agent.SetDestination (safehouse.transform.position);
 	}

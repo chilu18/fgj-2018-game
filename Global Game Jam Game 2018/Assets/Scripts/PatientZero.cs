@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatientZero : MonoBehaviour {
 
-	private float speed = 0.05f;
+	private float speed = 0.1f;
 	private float rotationSpeed = 3.5f;
 
 	private Vector3 direction = new Vector3();
