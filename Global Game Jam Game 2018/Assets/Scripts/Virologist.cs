@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatientZero : MonoBehaviour {
+public class Virologist : MonoBehaviour {
 
 	private float speed = 0.1f;
 	private float rotationSpeed = 3.5f;
@@ -17,45 +17,30 @@ public class PatientZero : MonoBehaviour {
 	public NavMeshAgent agent;
 
 	void Awake() {
-		this.agent.enabled = !Game.instance.isPlayingPatientZero;
+		this.agent.enabled = !Game.instance.isPlayingVirologist;
 	}
 
 	// Use this for initialization
 	void Start () {
-		animator.SetBool("isZombie", true);
+		animator.SetBool("isZombie", false);
 	}
 
 	void FixedUpdate() {
-		if (Game.instance.isPlayingPatientZero) {
+		if (Game.instance.isPlayingVirologist) {
 			this.GetComponent<Rigidbody> ().velocity = speed * direction;
 		}
 	}
 
-	void WalkToClosestHuman() {
-		RandomDude[] possibleHumans = FindObjectsOfType<RandomDude> ();
-		RandomDude closestHuman = null;
-		foreach (RandomDude possibleHuman in possibleHumans) {
-			if (possibleHuman.IsInfected ())
-				continue;
-			
-			if (!closestHuman ||
-			   Vector3.Distance (possibleHuman.transform.position, transform.position) < Vector3.Distance (closestHuman.transform.position, transform.position)) {
-				closestHuman = possibleHuman;
-			}
-		}
-
-		Virologist virologist = FindObjectOfType<Virologist> ();
-		if (Vector3.Distance (virologist.transform.position, transform.position) < Vector3.Distance (closestHuman.transform.position, transform.position)) {
-			agent.SetDestination (virologist.transform.position);
-		} else {
-			agent.SetDestination (closestHuman.transform.position);
-		}
+	private void GoToSafehouse() {
+		Safehouse[] safehouses = FindObjectsOfType<Safehouse> ();
+		Safehouse safehouse = safehouses [Random.Range (0, safehouses.Length)];
+		agent.SetDestination (safehouse.transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!Game.instance.isPlayingPatientZero) {
-			WalkToClosestHuman ();
+		if (!Game.instance.isPlayingVirologist) {
+			GoToSafehouse ();
 			return;
 		}
 		
@@ -83,14 +68,14 @@ public class PatientZero : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision c) {
-		if (!c.gameObject.GetComponent<RandomDude> ()) {
-			return;
+		if (c.gameObject.GetComponent<Safehouse> ()) {
+			Game.VirologistWin ();
+		} else if (c.gameObject.GetComponent<RandomDude> ()) {
+			if (c.gameObject.GetComponent<RandomDude> ().IsInfected ()) {
+				Game.PatientZeroWin ();
+			}
+		} else if (c.gameObject.GetComponent<PatientZero> ()) {
+			Game.PatientZeroWin ();
 		}
-
-		InfectPoorGuy (c.gameObject.GetComponent<RandomDude> ());
-	}
-
-	void InfectPoorGuy(RandomDude other) {
-		other.Infect ();
 	}
 }

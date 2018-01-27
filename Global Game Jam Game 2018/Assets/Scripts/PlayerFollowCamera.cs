@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class PlayerFollowCamera : MonoBehaviour {
 
-	private GameObject followPoint;
+	public GameObject followPoint;
+	public bool isVirologist;
+	public bool isPatientZero;
+
+	void Awake () {
+		this.gameObject.SetActive (
+			(isPatientZero && Game.instance.isPlayingPatientZero) ||
+			(isVirologist && Game.instance.isPlayingVirologist)
+		);
+	}
 
 	// Use this for initialization
 	void Start () {
 		transform.SetParent (null);
-		followPoint = GameObject.FindGameObjectWithTag ("PatientZeroCameraFollowPoint");
 	}
 	
 	// Update is called once per frame

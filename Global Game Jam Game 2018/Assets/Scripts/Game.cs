@@ -5,18 +5,16 @@ using UnityEngine;
 public class Game {
 
 	public static Game instance = new Game();
-	public bool isPlayingPatientZero = true;
-	public bool isPlayingVirologist = false;
+	public bool isPlayingPatientZero = false;
+	public bool isPlayingVirologist = true;
 
-	public static void CheckForWin () {
-		foreach (RandomDude dude in GameObject.FindObjectsOfType<RandomDude>()) {
-			if (!dude.IsInfected ())
-				return;
-		}
-
-		Debug.Log ("WIN!");
+	public static void VirologistWin () {
+		Debug.Log ("VIROLOGIST WIN!");
 		Time.timeScale = 0;
 	}
 
-
+	public static void PatientZeroWin () {
+		Debug.Log ("PATIENT ZERO WIN!");
+		Time.timeScale = 0;
+	}
 }

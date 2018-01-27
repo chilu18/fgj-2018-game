@@ -69,9 +69,12 @@ public class RandomDude : MonoBehaviour {
 				Collider c = hit.collider;
 				bool targetIsPatientZero = c.GetComponent<PatientZero> ();
 				bool targetIsRandomDude = c.GetComponent<RandomDude> ();
+				bool targetIsVirologist = c.GetComponent<Virologist> ();
 				bool targetIsInfected = targetIsRandomDude && c.GetComponent<RandomDude> ().IsInfected ();
 
-				bool wantToEatTarget = this.IsInfected () && targetIsRandomDude && !targetIsPatientZero && !targetIsInfected;
+				bool wantToEatTarget = this.IsInfected () &&
+				                       (targetIsRandomDude && !targetIsPatientZero && !targetIsInfected) ||
+				                       targetIsVirologist;
 				bool wantToEscsapeTarget = !this.IsInfected () && !targetIsPatientZero && targetIsInfected;
 
 				if (wantToEatTarget) {
@@ -136,7 +139,6 @@ public class RandomDude : MonoBehaviour {
 
 		other.Infect ();
 		LookupPlaceOfInterest ();
-		Game.CheckForWin ();
 	}
 
 	public void TeleportToSafety() {
