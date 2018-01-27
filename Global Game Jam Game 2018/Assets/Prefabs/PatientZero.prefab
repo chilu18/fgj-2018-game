@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 136975841409593860}
   - component: {fileID: 114324571588236346}
   - component: {fileID: 54928523836217760}
+  - component: {fileID: 195851479630980334}
   m_Layer: 0
   m_Name: PatientZero
   m_TagString: Untagged
@@ -603,6 +604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoving: 0
   animator: {fileID: 95301974596554804}
+  isOnAutoplay: 0
+  agent: {fileID: 195851479630980334}
 --- !u!114 &114438948554021606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -775,3 +778,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -1.4616029, y: 0.17190766, z: 0.6361644}
     m_Extent: {x: 3.667909, y: 2.6600738, z: 2.3374856}
   m_DirtyAABB: 0
+--- !u!195 &195851479630980334
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519483253408812}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

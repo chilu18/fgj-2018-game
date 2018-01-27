@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PatientZero : MonoBehaviour {
 
@@ -12,17 +13,47 @@ public class PatientZero : MonoBehaviour {
 	public bool isMoving = false;
 	public Animator animator;
 
+	public bool isOnAutoplay = false;
+	public NavMeshAgent agent;
+
+	void Awake() {
+		this.agent.enabled = !Game.instance.isPlayingPatientZero;
+	}
+
 	// Use this for initialization
 	void Start () {
 		animator.SetBool("isZombie", true);
 	}
 
 	void FixedUpdate() {
-		this.GetComponent<Rigidbody>().velocity = speed * direction;
+		if (Game.instance.isPlayingPatientZero) {
+			this.GetComponent<Rigidbody> ().velocity = speed * direction;
+		}
+	}
+
+	void WalkToClosestHuman() {
+		RandomDude[] possibleHumans = FindObjectsOfType<RandomDude> ();
+		RandomDude closestHuman = null;
+		foreach (RandomDude possibleHuman in possibleHumans) {
+			if (possibleHuman.IsInfected ())
+				continue;
+			
+			if (!closestHuman ||
+			   Vector3.Distance (possibleHuman.transform.position, transform.position) < Vector3.Distance (closestHuman.transform.position, transform.position)) {
+				closestHuman = possibleHuman;
+			}
+		}
+
+		agent.SetDestination (closestHuman.transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (!Game.instance.isPlayingPatientZero) {
+			WalkToClosestHuman ();
+			return;
+		}
+		
 		isMoving = false;
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			transform.Translate (Vector3.forward * -speed);

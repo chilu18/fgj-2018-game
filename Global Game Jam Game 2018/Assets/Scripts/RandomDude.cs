@@ -43,7 +43,7 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	void AreWeThereYet() {
-		if (Mathf.Abs(this.transform.position.magnitude - currentWalkTarget.magnitude) < 0.5f * 0.5f) {
+		if (Mathf.Abs(this.transform.position.magnitude - currentWalkTarget.magnitude) < 5 * 5) {
 			LookupPlaceOfInterest ();
 		}
 	}
@@ -68,10 +68,10 @@ public class RandomDude : MonoBehaviour {
 			if(hit.collider != null) {
 				Collider c = hit.collider;
 				bool targetIsPatientZero = c.GetComponent<PatientZero> ();
-				bool targetIsHuman = c.GetComponent<RandomDude> ();
-				bool targetIsInfected = targetIsHuman && c.GetComponent<RandomDude> ().IsInfected ();
+				bool targetIsRandomDude = c.GetComponent<RandomDude> ();
+				bool targetIsInfected = targetIsRandomDude && c.GetComponent<RandomDude> ().IsInfected ();
 
-				bool wantToEatTarget = this.IsInfected () && targetIsHuman && !targetIsPatientZero && !targetIsInfected;
+				bool wantToEatTarget = this.IsInfected () && targetIsRandomDude && !targetIsPatientZero && !targetIsInfected;
 				bool wantToEscsapeTarget = !this.IsInfected () && !targetIsPatientZero && targetIsInfected;
 
 				if (wantToEatTarget) {
