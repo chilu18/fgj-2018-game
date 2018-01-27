@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PointOfInterest : MonoBehaviour {
 
+	public float spread = 2.0f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +18,6 @@ public class PointOfInterest : MonoBehaviour {
 
 	void OnDrawGizmos() {
 		Gizmos.color = Color.cyan;
-		Gizmos.DrawWireSphere(transform.position, 1.0f);
+		Gizmos.DrawWireSphere(transform.position, spread);
 	}
 }
