@@ -14,10 +14,16 @@ public class RandomDude : MonoBehaviour {
 
 	private Vector3[] lookoutViewRayRelativePoints = new Vector3[] {
 		new Vector3(0,0,0),
+		new Vector3(0.1f,0,0),
+		new Vector3(0.3f,0,0),
 		new Vector3(0.5f,0,0),
-		new Vector3(-0.5f,0,0)
+		new Vector3(0.7f,0,0),
+		new Vector3(-0.7f,0,0),
+		new Vector3(-0.5f,0,0),
+		new Vector3(-0.3f,0,0),
+		new Vector3(-0.1f,0,0),
 	};
-	private float lookoutDistance = 4;
+	private float lookoutDistance = 10;
 	private NavMeshAgent agent;
 	private bool stayingCool = false;
 

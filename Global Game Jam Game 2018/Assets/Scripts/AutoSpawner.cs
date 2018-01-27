@@ -12,10 +12,12 @@ public class AutoSpawner : MonoBehaviour {
 		PointOfInterest[] pois = GameObject.FindObjectsOfType<PointOfInterest> ();
 		for (int i = 0; i < howMuch; i++) {
 			Transform newThing = GameObject.Instantiate<Transform>(this.what);
+			newThing.parent = this.transform;
+
 			Vector3 newPosition = GetRandomSpawnPoint ();
 			newThing.position = newPosition;
+
 		}
-		GameObject.Destroy (gameObject);
 	}
 
 	Vector3 GetRandomSpawnPoint() {
