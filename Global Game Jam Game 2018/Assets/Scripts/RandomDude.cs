@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RandomDude : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class RandomDude : MonoBehaviour {
 	public Material disinfectedMaterial;
 	private Vector3 direction = Vector3.zero;
 	private float speed = 1.5f;
+	private Vector3 currentWalkTarget;
 
 	private Vector3[] lookoutViewRayRelativePoints = new Vector3[] {
 		new Vector3(0,0,0),
@@ -15,35 +17,32 @@ public class RandomDude : MonoBehaviour {
 		new Vector3(-0.5f,0,0)
 	};
 	private float lookoutDistance = 4;
+	private NavMeshAgent agent;
 
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-
-	void FixedUpdate() {
-		this.GetComponent<Rigidbody>().velocity = speed * transform.TransformDirection(Vector3.forward);
+		agent = gameObject.GetComponent<NavMeshAgent> ();
+		LookupPlaceOfInterest ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		this.Poopoile ();
 		this.LookoutForInfectedPeople ();
-		this.RotateABitToCorrectDirection ();
+		AreWeThereYet ();
 	}
 
-	void RotateABitToCorrectDirection() {
-		Vector3 wantedDirection = this.direction;
-		Vector3 currentDirection = transform.TransformDirection(Vector3.forward);
-		Vector3 slowRotate = currentDirection + ((wantedDirection - currentDirection) * .1f);
-		this.transform.LookAt (this.transform.position + slowRotate);
+	void AreWeThereYet() {
+		if (Mathf.Abs(this.transform.position.magnitude - currentWalkTarget.magnitude) < 0.05) {
+			LookupPlaceOfInterest ();
+		}
 	}
 
-	void Poopoile() {
-		this.direction.x += Random.Range (-.2f, .2f);
-		this.direction.z += Random.Range (-.2f, .2f);
-		this.direction.Normalize ();
+	void LookupPlaceOfInterest() {
+		do {
+			currentWalkTarget = new Vector3 (Random.Range (-14, 14), 0.5f, Random.Range (-8, 8));
+		} while(Physics.CheckSphere (currentWalkTarget, 0.4f));
+		agent.SetDestination (currentWalkTarget);
 	}
 
 	void LookoutForInfectedPeople() {
@@ -60,6 +59,8 @@ public class RandomDude : MonoBehaviour {
 					Vector3 eatDirection = hit.point - transform.position;
 					Debug.DrawRay (transform.position, eatDirection, Color.black);
 					this.direction = eatDirection;
+					currentWalkTarget = hit.point;
+					agent.SetDestination (hit.point);
 				} else {
 					Vector3 escapeDirection = transform.position - hit.point;
 					Debug.DrawRay (transform.position, escapeDirection, Color.red);
@@ -96,6 +97,7 @@ public class RandomDude : MonoBehaviour {
 		RandomDude other = c.gameObject.GetComponent<RandomDude> ();
 
 		other.Infect ();
+		LookupPlaceOfInterest ();
 		Game.CheckForWin ();
 	}
 }
