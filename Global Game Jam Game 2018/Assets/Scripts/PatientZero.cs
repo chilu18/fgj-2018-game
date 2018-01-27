@@ -49,7 +49,7 @@ public class PatientZero : MonoBehaviour {
 		}
 
 		Virologist virologist = FindObjectOfType<Virologist> ();
-		if (Vector3.Distance (virologist.transform.position, transform.position) < Vector3.Distance (closestHuman.transform.position, transform.position)) {
+		if (closestHuman == null || Vector3.Distance (virologist.transform.position, transform.position) < Vector3.Distance (closestHuman.transform.position, transform.position)) {
 			agent.SetDestination (virologist.transform.position);
 		} else {
 			agent.SetDestination (closestHuman.transform.position);
