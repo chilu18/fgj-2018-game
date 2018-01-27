@@ -8,6 +8,7 @@ public class PlayerFollowCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		transform.SetParent (null);
 		followPoint = GameObject.FindGameObjectWithTag ("PatientZeroCameraFollowPoint");
 	}
 	
