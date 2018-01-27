@@ -8,6 +8,7 @@ public class InfectionCounter : MonoBehaviour {
 	void Update () {
 		int infected = 0;
 		int notInfected = 0;
+		int totalPersons = FindObjectOfType<AutoSpawner> ().howMuch;
 		RandomDude[] dudes = GameObject.FindObjectsOfType<RandomDude> ();
 		foreach (RandomDude dude in dudes) {
 			if (dude.IsInfected ()) {
@@ -15,6 +16,11 @@ public class InfectionCounter : MonoBehaviour {
 			}
 		}
 
-		this.GetComponent<Text> ().text = "People infected: " + infected + "/" + dudes.Length;
+		string text = "People infected: " + infected + "/" + dudes.Length;
+		if (dudes.Length < totalPersons) {
+			int saved = totalPersons - dudes.Length;
+			text += "\n(" + saved + ") people saved";
+		}
+		this.GetComponent<Text> ().text = text;
 	}
 }

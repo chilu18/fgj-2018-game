@@ -9,7 +9,6 @@ public class RandomDude : MonoBehaviour {
 	public Material disinfectedMaterial;
 	public Renderer renderer;
 	public Animator animator;
-	private float speed = 1.5f;
 	private Vector3 currentWalkTarget;
 
 	private Vector3[] lookoutViewRayRelativePoints = new Vector3[] {
@@ -70,16 +69,14 @@ public class RandomDude : MonoBehaviour {
 				bool targetIsInfected = c.GetComponent<RandomDude> () && c.GetComponent<RandomDude> ().IsInfected ();
 
 				bool wantToEatTarget = this.IsInfected () && !targetIsPatientZero && !targetIsInfected;
-				bool wantToEscsapeTarget = !this.IsInfected () && (targetIsPatientZero || targetIsInfected);
+				bool wantToEscsapeTarget = !this.IsInfected () && !targetIsPatientZero && targetIsInfected;
 
 				if (wantToEatTarget) {
 					currentWalkTarget = hit.point;
 					agent.SetDestination (hit.point);
 				} else if(wantToEscsapeTarget) {
-					if (!stayingCool) {
-						LookupPlaceOfInterest ();
-						StayCool ();
-					}
+					GoToSafehouse ();
+					FreakOut ();
 				}
 			}
 		}
@@ -91,14 +88,31 @@ public class RandomDude : MonoBehaviour {
 		this.stayingCool = false;
 	}
 
+	private void FreakOut() {
+		SetSpeed (2.0f);
+	}
+
+	private void GoToSafehouse() {
+		Safehouse safehouse = FindObjectOfType<Safehouse> ();
+		currentWalkTarget = safehouse.transform.position;
+		agent.SetDestination (safehouse.transform.position);
+	}
+
 	public void Infect () {
 		this.renderer.material = infectedMaterial;
 		this.animator.SetBool ("isZombie", true);
+		LookupPlaceOfInterest ();
+		SetSpeed (0.7f);
 	}
 
 	public void DisInfect() {
 		this.renderer.material = disinfectedMaterial;
 		this.animator.SetBool ("isZombie", false);
+	}
+
+	void SetSpeed(float newSpeed) {
+		this.agent.speed = newSpeed * 3.5f;
+		this.animator.speed = newSpeed;
 	}
 
 	public bool IsInfected() {
@@ -115,5 +129,9 @@ public class RandomDude : MonoBehaviour {
 		other.Infect ();
 		LookupPlaceOfInterest ();
 		Game.CheckForWin ();
+	}
+
+	public void TeleportToSafety() {
+		GameObject.Destroy (gameObject);
 	}
 }
