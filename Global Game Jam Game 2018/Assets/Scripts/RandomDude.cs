@@ -9,7 +9,6 @@ public class RandomDude : MonoBehaviour {
 	public Material disinfectedMaterial;
 	public Renderer renderer;
 	public Animator animator;
-	private Vector3 direction = Vector3.zero;
 	private float speed = 1.5f;
 	private Vector3 currentWalkTarget;
 
@@ -20,6 +19,7 @@ public class RandomDude : MonoBehaviour {
 	};
 	private float lookoutDistance = 4;
 	private NavMeshAgent agent;
+	private bool stayingCool = false;
 
 
 	// Use this for initialization
@@ -37,15 +37,15 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	void AreWeThereYet() {
-		if (Mathf.Abs(this.transform.position.magnitude - currentWalkTarget.magnitude) < 0.05) {
+		if (Mathf.Abs(this.transform.position.magnitude - currentWalkTarget.magnitude) < 0.5f * 0.5f) {
 			LookupPlaceOfInterest ();
 		}
 	}
 
 	void LookupPlaceOfInterest() {
-		do {
-			currentWalkTarget = new Vector3 (Random.Range (-14, 14), 0.5f, Random.Range (-8, 8));
-		} while(Physics.CheckSphere (currentWalkTarget, 0.4f));
+		PointOfInterest[] pois = GameObject.FindObjectsOfType<PointOfInterest> ();
+		PointOfInterest selected = pois [Random.Range (0, pois.Length)];
+		currentWalkTarget = selected.transform.position;
 		agent.SetDestination (currentWalkTarget);
 	}
 
@@ -59,19 +59,30 @@ public class RandomDude : MonoBehaviour {
 			Physics.Raycast (ray, out hit, lookoutDistance);
 
 			if(hit.collider != null) {
-				if (this.IsInfected () && hit.collider.GetComponent<RandomDude> () && !hit.collider.GetComponent<RandomDude> ().IsInfected ()) {
-					Vector3 eatDirection = hit.point - transform.position;
-					Debug.DrawRay (transform.position, eatDirection, Color.black);
-					this.direction = eatDirection;
+				Collider c = hit.collider;
+				bool targetIsPatientZero = c.GetComponent<PatientZero> ();
+				bool targetIsInfected = c.GetComponent<RandomDude> () && c.GetComponent<RandomDude> ().IsInfected ();
+
+				bool wantToEatTarget = this.IsInfected () && !targetIsPatientZero && !targetIsInfected;
+				bool wantToEscsapeTarget = !this.IsInfected () && (targetIsPatientZero || targetIsInfected);
+
+				if (wantToEatTarget) {
 					currentWalkTarget = hit.point;
 					agent.SetDestination (hit.point);
-				} else {
-					Vector3 escapeDirection = transform.position - hit.point;
-					Debug.DrawRay (transform.position, escapeDirection, Color.red);
-					this.direction = escapeDirection;
+				} else if(wantToEscsapeTarget) {
+					if (!stayingCool) {
+						LookupPlaceOfInterest ();
+						StayCool ();
+					}
 				}
 			}
 		}
+	}
+
+	private IEnumerator StayCool() {
+		this.stayingCool = true;
+		yield return new WaitForSeconds(1.0f);
+		this.stayingCool = false;
 	}
 
 	public void Infect () {
@@ -87,13 +98,6 @@ public class RandomDude : MonoBehaviour {
 	public bool IsInfected() {
 		return this.animator.GetBool ("isZombie");
 	}
-
-	void OnCollisionStay(Collision c) {
-		this.direction = c.impulse;
-		this.direction.Normalize ();
-	}
-
-
 
 	void OnCollisionEnter(Collision c) {
 		if (!this.IsInfected() || !c.gameObject.GetComponent<RandomDude> ()) {
