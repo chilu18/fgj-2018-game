@@ -73,8 +73,10 @@ public class RandomDude : MonoBehaviour {
 				bool targetIsInfected = targetIsRandomDude && c.GetComponent<RandomDude> ().IsInfected ();
 
 				bool wantToEatTarget = this.IsInfected () &&
-				                       (targetIsRandomDude && !targetIsPatientZero && !targetIsInfected) ||
-				                       targetIsVirologist;
+				                       (
+				                           (targetIsRandomDude && !targetIsPatientZero && !targetIsInfected) ||
+				                           targetIsVirologist
+				                       );
 				bool wantToEscsapeTarget = !this.IsInfected () && !targetIsPatientZero && targetIsInfected;
 
 				if (wantToEatTarget) {
