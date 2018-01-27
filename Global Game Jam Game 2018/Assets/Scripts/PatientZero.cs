@@ -28,6 +28,8 @@ public class PatientZero : MonoBehaviour {
 	void FixedUpdate() {
 		if (Game.instance.isPlayingPatientZero) {
 			this.GetComponent<Rigidbody> ().velocity = speed * direction;
+		} else {
+			this.animator.SetFloat ("speed", 1);
 		}
 	}
 

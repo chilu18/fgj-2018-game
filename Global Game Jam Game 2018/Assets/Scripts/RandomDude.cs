@@ -43,7 +43,7 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	void AreWeThereYet() {
-		if (Mathf.Abs(this.transform.position.magnitude - currentWalkTarget.magnitude) < 5 * 5) {
+		if (Mathf.Abs(this.transform.position.magnitude - currentWalkTarget.magnitude) < 1) {
 			LookupPlaceOfInterest ();
 		}
 	}
