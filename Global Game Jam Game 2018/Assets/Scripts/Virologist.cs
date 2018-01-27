@@ -30,6 +30,8 @@ public class Virologist : MonoBehaviour {
 	void FixedUpdate() {
 		if (Game.instance.isPlayingVirologist) {
 			this.GetComponent<Rigidbody> ().velocity = speed * direction;
+		} else {
+			this.animator.SetFloat ("speed", 1);
 		}
 	}
 

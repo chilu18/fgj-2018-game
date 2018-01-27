@@ -5,8 +5,8 @@ using UnityEngine;
 public class Game {
 
 	public static Game instance = new Game();
-	public bool isPlayingPatientZero = false;
-	public bool isPlayingVirologist = true;
+	public bool isPlayingPatientZero = true;
+	public bool isPlayingVirologist = false;
 
 	public static void VirologistWin () {
 		Debug.Log ("VIROLOGIST WIN!");

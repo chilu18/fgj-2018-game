@@ -15,11 +15,9 @@ public class PatientZero : MonoBehaviour {
 
 	public bool isOnAutoplay = false;
 	public NavMeshAgent agent;
-	public NavMeshObstacle obstacle;
 
 	void Awake() {
 		this.agent.enabled = !Game.instance.isPlayingPatientZero;
-		this.obstacle.enabled = Game.instance.isPlayingPatientZero;
 	}
 
 	// Use this for initialization
