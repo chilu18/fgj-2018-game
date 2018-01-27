@@ -34,6 +34,6 @@ public class InfectionCounter : MonoBehaviour {
 		float saved = totalPersons - dudes.Length;
 		float infectedPercentage = Mathf.Round(infected / totalPersons * 100);
 		string escapedAmount = saved.ToString();
-		this.GetComponent<Text> ().text = "INFECTION RATE <size=30><color=#" + colorString + ">" + infectedPercentage.ToString() + "%</color></size>\n<size=30><color=#" + colorString + ">" + escapedAmount.ToString() + "</color></size> ESCAPED";
+		this.GetComponent<Text> ().text = "INFECTION RATE <size=50><color=#" + colorString + ">" + infectedPercentage.ToString() + "%</color></size>\n<size=50><color=#" + colorString + ">" + escapedAmount.ToString() + "</color></size> ESCAPED";
 	}
 }
