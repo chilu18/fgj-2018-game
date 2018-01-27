@@ -520,35 +520,28 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 224104477384411384, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
+    - target: {fileID: 114215181168876720, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
         type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -40
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 560f9ef2b7a954bf38d69cc3d85cb95a,
+        type: 3}
+    - target: {fileID: 114215181168876720, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
+        type: 2}
+      propertyPath: m_Text
+      value: 'INFECTION RATE <size=30><color=#74d7d4>10%</color></size>
+
+        <size=30><color=#74d7d4>2</color></size> ESCAPED'
       objectReference: {fileID: 0}
     - target: {fileID: 224104477384411384, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 224104477384411384, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 200
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 114215181168876720, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
         type: 2}
-      propertyPath: m_FontData.m_BestFit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215181168876720, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
-        type: 2}
-      propertyPath: m_Text
-      value: 'People infected: 0/100'
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215181168876720, guid: 91c8ed28e6041406c9ec2efd60ba2c37,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 1
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91c8ed28e6041406c9ec2efd60ba2c37, type: 2}

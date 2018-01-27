@@ -5,12 +5,14 @@ using UnityEngine.AI;
 
 public class RandomDude : MonoBehaviour {
 
-	public Material infectedMaterial;
-	public Material disinfectedMaterial;
+
+	public Material[] infectedMaterials;
+	public Material[] disinfectedMaterials;
 	public Renderer renderer;
 	public Animator animator;
 	public Vector3 currentWalkTarget;
 	public int wtFrom;
+	public int dudeType = 0;
 
 	private Vector3[] lookoutViewRayRelativePoints = new Vector3[] {
 		new Vector3(0,0,0),
@@ -30,10 +32,12 @@ public class RandomDude : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		dudeType = Random.Range (0, 4);
 		agent = gameObject.GetComponent<NavMeshAgent> ();
 		LookupPlaceOfInterest ();
 		this.animator.SetFloat ("speed", 1);
 		this.animator.SetBool ("isZombie", false);
+		DisInfect ();
 	}
 	
 	// Update is called once per frame
@@ -111,7 +115,7 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	public void Infect () {
-		this.renderer.material = infectedMaterial;
+		this.renderer.material = infectedMaterials[dudeType];
 		this.animator.SetBool ("isZombie", true);
 		LookupPlaceOfInterest ();
 		SetSpeed (Game.instance.isPlayingVirologist ? 3.0f : 0.3f);
@@ -119,7 +123,7 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	public void DisInfect() {
-		this.renderer.material = disinfectedMaterial;
+		this.renderer.material = disinfectedMaterials[dudeType];
 		this.animator.SetBool ("isZombie", false);
 	}
 
