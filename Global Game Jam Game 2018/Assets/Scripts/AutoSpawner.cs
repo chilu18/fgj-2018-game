@@ -16,7 +16,6 @@ public class AutoSpawner : MonoBehaviour {
 
 			Vector3 newPosition = GetRandomSpawnPoint ();
 			newThing.position = newPosition;
-
 		}
 	}
 

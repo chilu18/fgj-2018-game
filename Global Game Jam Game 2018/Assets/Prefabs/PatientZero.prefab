@@ -114,6 +114,8 @@ GameObject:
   - component: {fileID: 114324571588236346}
   - component: {fileID: 54928523836217760}
   - component: {fileID: 195851479630980334}
+  - component: {fileID: 208978947697178354}
+  - component: {fileID: 114907392103202994}
   m_Layer: 0
   m_Name: PatientZero
   m_TagString: Untagged
@@ -606,6 +608,7 @@ MonoBehaviour:
   animator: {fileID: 95301974596554804}
   isOnAutoplay: 0
   agent: {fileID: 195851479630980334}
+  obstacle: {fileID: 208978947697178354}
 --- !u!114 &114438948554021606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -690,6 +693,18 @@ MonoBehaviour:
   shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
   shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
   shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
+--- !u!114 &114907392103202994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519483253408812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f51d32323644a8dbdb5f0d8c41bc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  high: 0
 --- !u!114 &114941393588184634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -802,3 +817,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &208978947697178354
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519483253408812}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

@@ -15,9 +15,11 @@ public class Virologist : MonoBehaviour {
 
 	public bool isOnAutoplay = false;
 	public NavMeshAgent agent;
+	public NavMeshObstacle obstacle;
 
 	void Awake() {
 		this.agent.enabled = !Game.instance.isPlayingVirologist;
+		this.obstacle.enabled = Game.instance.isPlayingVirologist;
 	}
 
 	// Use this for initialization

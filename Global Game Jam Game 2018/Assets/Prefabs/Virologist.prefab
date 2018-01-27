@@ -242,6 +242,8 @@ GameObject:
   - component: {fileID: 114214822752557150}
   - component: {fileID: 54605600666046130}
   - component: {fileID: 195424795397013568}
+  - component: {fileID: 208661759929060522}
+  - component: {fileID: 114019876503133188}
   m_Layer: 0
   m_Name: Virologist
   m_TagString: Untagged
@@ -591,6 +593,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114019876503133188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653667991641238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f51d32323644a8dbdb5f0d8c41bc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  high: 1
 --- !u!114 &114076381592462084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -626,6 +640,7 @@ MonoBehaviour:
   animator: {fileID: 95866925863193176}
   isOnAutoplay: 0
   agent: {fileID: 195424795397013568}
+  obstacle: {fileID: 208661759929060522}
 --- !u!114 &114366669063080350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -802,3 +817,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &208661759929060522
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653667991641238}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
