@@ -7,6 +7,8 @@ public class RandomDude : MonoBehaviour {
 
 	public Material infectedMaterial;
 	public Material disinfectedMaterial;
+	public Renderer renderer;
+	public Animator animator;
 	private Vector3 direction = Vector3.zero;
 	private float speed = 1.5f;
 	private Vector3 currentWalkTarget;
@@ -24,6 +26,8 @@ public class RandomDude : MonoBehaviour {
 	void Start () {
 		agent = gameObject.GetComponent<NavMeshAgent> ();
 		LookupPlaceOfInterest ();
+		this.animator.SetFloat ("speed", 1);
+		this.animator.SetBool ("isZombie", false);
 	}
 	
 	// Update is called once per frame
@@ -71,15 +75,17 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	public void Infect () {
-		this.GetComponent<Renderer> ().material = infectedMaterial;
+		this.renderer.material = infectedMaterial;
+		this.animator.SetBool ("isZombie", true);
 	}
 
 	public void DisInfect() {
-		this.GetComponent<Renderer> ().material = disinfectedMaterial;
+		this.renderer.material = disinfectedMaterial;
+		this.animator.SetBool ("isZombie", false);
 	}
 
 	public bool IsInfected() {
-		return this.GetComponent<Renderer>().sharedMaterial == infectedMaterial;
+		return this.animator.GetBool ("isZombie");
 	}
 
 	void OnCollisionStay(Collision c) {

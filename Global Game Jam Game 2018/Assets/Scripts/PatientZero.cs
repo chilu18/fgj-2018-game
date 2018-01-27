@@ -8,9 +8,11 @@ public class PatientZero : MonoBehaviour {
 
 	private Vector3 direction = new Vector3();
 
+	public Animator animator;
+
 	// Use this for initialization
 	void Start () {
-		
+		animator.SetBool("isZombie", true);
 	}
 
 	void FixedUpdate() {
@@ -31,6 +33,11 @@ public class PatientZero : MonoBehaviour {
 		} else if (Input.GetKey (KeyCode.RightArrow)) {
 			this.direction.x += 1;
 		}
+		animator.SetFloat("speed", this.direction == Vector3.zero ? 0.0f : 1.0f);
+
+		Vector3 currentDirection = this.transform.TransformDirection (Vector3.forward);
+		Vector3 wantedDirection = this.direction;
+		this.transform.LookAt (this.transform.position + currentDirection + ((wantedDirection - currentDirection) * 0.2f));
 	}
 
 	void OnCollisionEnter(Collision c) {
