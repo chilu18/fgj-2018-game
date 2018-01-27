@@ -99,8 +99,8 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	private void GoToSafehouse() {
-		Safehouse safehouse = FindObjectOfType<Safehouse> ();
-		wtFrom = 3;
+		Safehouse[] safehouses = FindObjectsOfType<Safehouse> ();
+		Safehouse safehouse = safehouses [Random.Range (0, safehouses.Length)];
 		currentWalkTarget = safehouse.transform.position;
 		agent.SetDestination (safehouse.transform.position);
 	}
