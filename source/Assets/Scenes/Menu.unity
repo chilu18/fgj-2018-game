@@ -1056,6 +1056,48 @@ MonoBehaviour:
   isDown: 0
   gameStarter: {fileID: 1558581052}
   vignetteSprite: {fileID: 21300000, guid: c433479c3101643cb98cd1bd3b131b50, type: 3}
+--- !u!1001 &1496751536
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 26.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.707164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -9.849506
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162563713672450, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fbbabd2f356b14285bb774ba798e86d8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1558581051
 GameObject:
   m_ObjectHideFlags: 0

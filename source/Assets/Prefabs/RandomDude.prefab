@@ -516,6 +516,11 @@ MonoBehaviour:
   animator: {fileID: 95972192497533136}
   currentWalkTarget: {x: 0, y: 0, z: 0}
   wtFrom: 0
+  dudeType: 0
+  bloodPartice: {fileID: 4163176093962954, guid: f0b909c6cc9fe4381975a8ec71797d64,
+    type: 2}
+  sweatParticle: {fileID: 4649890939991950, guid: a1ecbf11c1c5f461f990f71a05127e6e,
+    type: 2}
 --- !u!136 &136980233154977892
 CapsuleCollider:
   m_ObjectHideFlags: 1
