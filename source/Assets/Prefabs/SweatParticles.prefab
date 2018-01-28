@@ -2478,7 +2478,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 0
     collisionMode: 0
@@ -2486,7 +2486,7 @@ ParticleSystem:
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
+    plane0: {fileID: 4065833010196332, guid: 628b41f69e57b499286c2494af9a2eb0, type: 2}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
     plane3: {fileID: 0}
