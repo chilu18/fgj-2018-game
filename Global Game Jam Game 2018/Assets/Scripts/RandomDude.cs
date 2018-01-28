@@ -13,6 +13,8 @@ public class RandomDude : MonoBehaviour {
 	public Vector3 currentWalkTarget;
 	public int wtFrom;
 	public int dudeType = 0;
+	public Transform bloodPartice;
+	public Transform sweatParticle;
 
 	private Vector3[] lookoutViewRayRelativePoints = new Vector3[] {
 		new Vector3(0,0,0),
@@ -105,6 +107,8 @@ public class RandomDude : MonoBehaviour {
 
 	private void FreakOut() {
 		SetSpeed (2.0f);
+		Transform sweat = Instantiate<Transform> (sweatParticle);
+		sweat.transform.position = transform.position;
 	}
 
 	private void GoToSafehouse() {
@@ -120,6 +124,9 @@ public class RandomDude : MonoBehaviour {
 		LookupPlaceOfInterest ();
 		SetSpeed (Game.instance.isPlayingVirologist ? 3.0f : 0.3f);
 		this.agent.radius = 0.49f;
+
+		Transform blood = Instantiate<Transform> (bloodPartice);
+		blood.transform.position = transform.position;
 	}
 
 	public void DisInfect() {
@@ -142,8 +149,9 @@ public class RandomDude : MonoBehaviour {
 		}
 
 		RandomDude other = c.gameObject.GetComponent<RandomDude> ();
-
-		other.Infect ();
+		if (!other.IsInfected ()) {
+			other.Infect ();
+		}
 		LookupPlaceOfInterest ();
 	}
 
