@@ -9,8 +9,10 @@ public class InfectionCounter : MonoBehaviour {
 	public Sprite virologistVignette;
 
 	private string colorString;
+	RandomDude[] dudes;
 
 	void Start () {
+		dudes = GameObject.FindObjectsOfType<RandomDude> ();
 		if (Game.instance.isPlayingVirologist) {
 			vignette.sprite = virologistVignette;
 			colorString = "74d7d4";
@@ -24,7 +26,6 @@ public class InfectionCounter : MonoBehaviour {
 		float infected = 0f;
 		float totalPersons = FindObjectOfType<AutoSpawner> ().howMuch;
 
-		RandomDude[] dudes = GameObject.FindObjectsOfType<RandomDude> ();
 		foreach (RandomDude dude in dudes) {
 			if (dude.IsInfected ()) {
 				infected++;	

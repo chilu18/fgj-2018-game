@@ -16,6 +16,8 @@ public class PatientZero : MonoBehaviour {
 	public bool isOnAutoplay = false;
 	public NavMeshAgent agent;
 
+	private RandomDude[] allRandomDudes;
+
 	void Awake() {
 		this.agent.enabled = !Game.instance.isPlayingPatientZero;
 		this.GetComponent<AudioListener>().enabled = Game.instance.isPlayingPatientZero;
@@ -24,6 +26,7 @@ public class PatientZero : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator.SetBool("isZombie", true);
+		allRandomDudes = FindObjectsOfType<RandomDude> ();
 	}
 
 	void FixedUpdate() {
@@ -35,7 +38,7 @@ public class PatientZero : MonoBehaviour {
 	}
 
 	void WalkToClosestHuman() {
-		RandomDude[] possibleHumans = FindObjectsOfType<RandomDude> ();
+		RandomDude[] possibleHumans = allRandomDudes;
 		RandomDude closestHuman = null;
 		foreach (RandomDude possibleHuman in possibleHumans) {
 			if (possibleHuman.IsInfected ())
