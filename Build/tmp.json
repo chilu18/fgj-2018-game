@@ -1,0 +1,13 @@
+{
+"companyName": "DefaultCompany",
+"productName": "Global Game Jam Game 2018",
+"dataUrl": "tmp.data.unityweb",
+"asmCodeUrl": "tmp.asm.code.unityweb",
+"asmMemoryUrl": "tmp.asm.memory.unityweb",
+"asmFrameworkUrl": "tmp.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
