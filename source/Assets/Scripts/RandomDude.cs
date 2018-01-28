@@ -124,7 +124,7 @@ public class RandomDude : MonoBehaviour {
 		this.renderer.material = infectedMaterials[dudeType];
 		this.animator.SetBool ("isZombie", true);
 		LookupPlaceOfInterest ();
-		SetSpeed (Game.instance.isPlayingVirologist ? 3.0f : 0.3f);
+		SetSpeed (Game.instance.isPlayingVirologist ? 1.0f : 0.3f);
 		this.agent.radius = 0.49f;
 
 		Transform blood = Instantiate<Transform> (bloodPartice);

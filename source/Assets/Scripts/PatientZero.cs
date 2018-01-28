@@ -67,18 +67,18 @@ public class PatientZero : MonoBehaviour {
 		
 		isMoving = false;
 		if (Input.GetKey (KeyCode.DownArrow)) {
-			transform.Translate (Vector3.forward * -speed);
+			transform.Translate (Vector3.forward * -speed * Time.deltaTime * 30);
 			isMoving = true;
 		} else if (Input.GetKey (KeyCode.UpArrow)) {
-			transform.Translate (Vector3.forward * speed);
+			transform.Translate (Vector3.forward * speed * Time.deltaTime * 30);
 			isMoving = true;
 		}
 
 		if (Input.GetKey (KeyCode.LeftArrow)) {
-			transform.Rotate (Vector3.up * -rotationSpeed);
+			transform.Rotate (Vector3.up * -rotationSpeed * Time.deltaTime * 30);
 			isMoving = true;
 		} else if (Input.GetKey (KeyCode.RightArrow)) {
-			transform.Rotate (Vector3.up * rotationSpeed);
+			transform.Rotate (Vector3.up * rotationSpeed * Time.deltaTime * 30);
 			isMoving = true;
 		}
 		animator.SetFloat("speed", isMoving == false ? 0.0f : 1.0f);
