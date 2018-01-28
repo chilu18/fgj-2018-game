@@ -7,6 +7,7 @@ public class Game {
 	public static Game instance = new Game();
 	public bool isPlayingPatientZero = false;
 	public bool isPlayingVirologist = true;
+	public bool hasStartedOnce = false;
 
 	public static void VirologistWin () {
 		Debug.Log ("VIROLOGIST WIN!");

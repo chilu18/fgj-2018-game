@@ -22,10 +22,12 @@ public class MainMenuGameStarter : MonoBehaviour {
 	}
 
 	void CheckPressAnyArrowKey() {
-		if (Input.GetKeyDown (KeyCode.LeftArrow) ||
+		if (Game.instance.hasStartedOnce ||
+			Input.GetKeyDown (KeyCode.LeftArrow) ||
 			Input.GetKeyDown (KeyCode.RightArrow) ||
 			Input.GetKeyDown (KeyCode.UpArrow) ||
 			Input.GetKeyDown (KeyCode.DownArrow)) {
+			Game.instance.hasStartedOnce = true;
 			isOnSelectUserMenu = true;
 			selectUserMenu.SetActive (true);
 			pressAnyKeyMenu.SetActive (false);
