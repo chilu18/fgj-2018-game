@@ -31,10 +31,12 @@ public class RandomDude : MonoBehaviour {
 	private float lookoutDistance = 10;
 	private NavMeshAgent agent;
 	private bool stayingCool = false;
+	private PointOfInterest[] pois;
 
 
 	// Use this for initialization
 	void Start () {
+		pois = FindObjectsOfType<PointOfInterest> ();
 		dudeType = Random.Range (0, 4);
 		agent = gameObject.GetComponent<NavMeshAgent> ();
 		LookupPlaceOfInterest ();
@@ -56,7 +58,6 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	void LookupPlaceOfInterest() {
-		PointOfInterest[] pois = GameObject.FindObjectsOfType<PointOfInterest> ();
 		PointOfInterest selected = pois [Random.Range (0, pois.Length)];
 		wtFrom = 1;
 		currentWalkTarget = selected.transform.position;
@@ -114,8 +115,7 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	private void GoToSafehouse() {
-		Safehouse[] safehouses = FindObjectsOfType<Safehouse> ();
-		Safehouse safehouse = safehouses [Random.Range (0, safehouses.Length)];
+		Safehouse safehouse = FindObjectOfType<Safehouse> ();
 		currentWalkTarget = safehouse.transform.position;
 		agent.SetDestination (safehouse.transform.position);
 	}
