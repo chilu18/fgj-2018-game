@@ -41,7 +41,7 @@ public class PatientZero : MonoBehaviour {
 		RandomDude[] possibleHumans = allRandomDudes;
 		RandomDude closestHuman = null;
 		foreach (RandomDude possibleHuman in possibleHumans) {
-			if (possibleHuman.IsInfected ())
+			if (possibleHuman == null || possibleHuman.IsInfected ())
 				continue;
 			
 			if (!closestHuman ||

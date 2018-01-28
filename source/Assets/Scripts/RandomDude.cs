@@ -13,6 +13,7 @@ public class RandomDude : MonoBehaviour {
 	public Vector3 currentWalkTarget;
 	public int wtFrom;
 	public int dudeType = 0;
+	public bool isZombie = false;
 	public Transform bloodPartice;
 	public Transform sweatParticle;
 	public RandomDudeRadomMusicPlayer soundPlayer;
@@ -42,6 +43,7 @@ public class RandomDude : MonoBehaviour {
 		LookupPlaceOfInterest ();
 		this.animator.SetFloat ("speed", 1);
 		this.animator.SetBool ("isZombie", false);
+		this.isZombie = false;
 		DisInfect ();
 	}
 	
@@ -123,6 +125,7 @@ public class RandomDude : MonoBehaviour {
 	public void Infect () {
 		this.renderer.material = infectedMaterials[dudeType];
 		this.animator.SetBool ("isZombie", true);
+		this.isZombie = true;
 		LookupPlaceOfInterest ();
 		SetSpeed (Game.instance.isPlayingVirologist ? 1.0f : 0.3f);
 		this.agent.radius = 0.49f;
@@ -134,6 +137,7 @@ public class RandomDude : MonoBehaviour {
 	public void DisInfect() {
 		this.renderer.material = disinfectedMaterials[dudeType];
 		this.animator.SetBool ("isZombie", false);
+		this.isZombie = false;
 	}
 
 	void SetSpeed(float newSpeed) {
@@ -142,7 +146,7 @@ public class RandomDude : MonoBehaviour {
 	}
 
 	public bool IsInfected() {
-		return this.animator.GetBool ("isZombie");
+		return this.isZombie;
 	}
 
 	void OnCollisionEnter(Collision c) {
