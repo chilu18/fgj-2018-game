@@ -18,6 +18,7 @@ public class PatientZero : MonoBehaviour {
 
 	void Awake() {
 		this.agent.enabled = !Game.instance.isPlayingPatientZero;
+		this.GetComponent<AudioListener>().enabled = Game.instance.isPlayingPatientZero;
 	}
 
 	// Use this for initialization

@@ -15,6 +15,7 @@ public class RandomDude : MonoBehaviour {
 	public int dudeType = 0;
 	public Transform bloodPartice;
 	public Transform sweatParticle;
+	public RandomDudeRadomMusicPlayer soundPlayer;
 
 	private Vector3[] lookoutViewRayRelativePoints = new Vector3[] {
 		new Vector3(0,0,0),
@@ -109,6 +110,7 @@ public class RandomDude : MonoBehaviour {
 		SetSpeed (2.0f);
 		Transform sweat = Instantiate<Transform> (sweatParticle);
 		sweat.transform.position = transform.position;
+		soundPlayer.PlayScaredClip ();
 	}
 
 	private void GoToSafehouse() {

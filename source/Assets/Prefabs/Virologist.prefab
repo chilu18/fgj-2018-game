@@ -221,7 +221,6 @@ GameObject:
   - component: {fileID: 4285257815928742}
   - component: {fileID: 20810196651208822}
   - component: {fileID: 124432935839491340}
-  - component: {fileID: 81710321493286342}
   - component: {fileID: 114366669063080350}
   - component: {fileID: 114812692885981446}
   - component: {fileID: 114691290061041016}
@@ -262,6 +261,7 @@ GameObject:
   - component: {fileID: 195424795397013568}
   - component: {fileID: 208661759929060522}
   - component: {fileID: 114019876503133188}
+  - component: {fileID: 81034763365166128}
   m_Layer: 0
   m_Name: Virologist
   m_TagString: Untagged
@@ -642,12 +642,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!81 &81710321493286342
+--- !u!81 &81034763365166128
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1455033989445980}
+  m_GameObject: {fileID: 1653667991641238}
   m_Enabled: 1
 --- !u!95 &95866925863193176
 Animator:

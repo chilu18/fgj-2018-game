@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 54928523836217760}
   - component: {fileID: 195851479630980334}
   - component: {fileID: 114907392103202994}
+  - component: {fileID: 81328166204147948}
   m_Layer: 0
   m_Name: PatientZero
   m_TagString: Untagged
@@ -207,7 +208,6 @@ GameObject:
   - component: {fileID: 4067726664229316}
   - component: {fileID: 20035157111157404}
   - component: {fileID: 124143235111725860}
-  - component: {fileID: 81048669189301246}
   - component: {fileID: 114941393588184634}
   - component: {fileID: 114685753817441316}
   - component: {fileID: 114879940135890754}
@@ -641,12 +641,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!81 &81048669189301246
+--- !u!81 &81328166204147948
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745076531633642}
+  m_GameObject: {fileID: 1519483253408812}
   m_Enabled: 1
 --- !u!95 &95301974596554804
 Animator:

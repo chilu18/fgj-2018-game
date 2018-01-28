@@ -20,6 +20,7 @@ public class Virologist : MonoBehaviour {
 	void Awake() {
 		this.agent.enabled = !Game.instance.isPlayingVirologist;
 		this.obstacle.enabled = Game.instance.isPlayingVirologist;
+		this.GetComponent<AudioListener>().enabled = Game.instance.isPlayingVirologist;
 	}
 
 	// Use this for initialization
