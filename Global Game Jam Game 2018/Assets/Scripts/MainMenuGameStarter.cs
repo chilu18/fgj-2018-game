@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenuGameStarter : MonoBehaviour {
@@ -8,6 +9,7 @@ public class MainMenuGameStarter : MonoBehaviour {
 	public GameObject selectUserMenu;
 	public GameObject pressAnyKeyMenu;
 	public MenuButton virologistSelected;
+	public Image vignette;
 	bool isOnSelectUserMenu = false;
 	
 	// Update is called once per frame
@@ -42,5 +44,9 @@ public class MainMenuGameStarter : MonoBehaviour {
 			}
 			SceneManager.LoadScene("Game Scene", LoadSceneMode.Single);
 		}
+	}
+
+	public void UpdateVignette(Sprite sprite) {
+		vignette.sprite = sprite;
 	}
 }

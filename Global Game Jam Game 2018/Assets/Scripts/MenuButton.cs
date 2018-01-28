@@ -10,6 +10,8 @@ public class MenuButton : MonoBehaviour {
 	public GameObject disableThis;
 	public Text greyThis;
 	public bool isDown = false;
+	public MainMenuGameStarter gameStarter;
+	public Sprite vignetteSprite;
 
 	void Start() {
 		if (isDown)
@@ -23,6 +25,7 @@ public class MenuButton : MonoBehaviour {
 			Disable ();
 		} else if (Input.GetKeyDown (positiveKey)) {
 			Enable ();
+			gameStarter.UpdateVignette (vignetteSprite);
 		}
 	}
 
