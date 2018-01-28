@@ -153,6 +153,7 @@ public class RandomDude : MonoBehaviour {
 		RandomDude other = c.gameObject.GetComponent<RandomDude> ();
 		if (!other.IsInfected ()) {
 			other.Infect ();
+			soundPlayer.PlayMinchingSound ();
 		}
 		LookupPlaceOfInterest ();
 	}

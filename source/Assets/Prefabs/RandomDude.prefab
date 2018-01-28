@@ -622,6 +622,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e998141f2c7ee48f484fe4b10e0af49b, type: 3}
   - {fileID: 8300000, guid: 4daef7d28f1c34d8cbc2bbba72e26514, type: 3}
   - {fileID: 8300000, guid: 4b75d3e242ef44c73b62c9918fa2c173, type: 3}
+  eatingClips:
+  - {fileID: 8300000, guid: c2b5787da27d74362939f6b0c1684753, type: 3}
+  - {fileID: 8300000, guid: a1d0ad866821a4647af69c9acdde2e5c, type: 3}
 --- !u!114 &114620427499521776
 MonoBehaviour:
   m_ObjectHideFlags: 1

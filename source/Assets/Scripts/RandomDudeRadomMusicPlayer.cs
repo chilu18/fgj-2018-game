@@ -9,6 +9,7 @@ public class RandomDudeRadomMusicPlayer : MonoBehaviour {
 
 	public AudioClip[] infectedClips;
 	public AudioClip[] scaredClips;
+	public AudioClip[] eatingClips;
 	
 	void Start() {
 		PlaySomeRandomSoundClipAfterSomeTime ();
@@ -30,6 +31,12 @@ public class RandomDudeRadomMusicPlayer : MonoBehaviour {
 
 	public void PlayScaredClip() {
 		AudioClip randomClip = scaredClips [Random.Range (0, scaredClips.Length)];
+		audioSource.PlayOneShot (randomClip);
+		audioSource.pitch = Random.Range (0.8f, 1.5f);
+	}
+
+	public void PlayMinchingSound() {
+		AudioClip randomClip = eatingClips [Random.Range (0, eatingClips.Length)];
 		audioSource.PlayOneShot (randomClip);
 		audioSource.pitch = Random.Range (0.8f, 1.5f);
 	}
